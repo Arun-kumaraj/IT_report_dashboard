@@ -1,0 +1,6 @@
+{
+  "name": "IT Incident & Job Monitoring Dashboard",
+  "description": "Internal IT operations dashboard to monitor application services, scheduled jobs, alerts, and incident management tickets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

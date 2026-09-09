@@ -1,0 +1,136 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "name": "Payment Gateway API",
+      "description": "Handles customer checkout, card payments and digital wallets",
+      "status": "UP",
+      "responseTime": 115,
+      "lastChecked": "2026-09-08T09:30:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "User Authentication Service",
+      "description": "JWT session validation and OAuth single sign-on",
+      "status": "UP",
+      "responseTime": 65,
+      "lastChecked": "2026-09-08T09:30:00.000Z"
+    },
+    {
+      "id": 3,
+      "name": "Notification Engine",
+      "description": "Sends transactional SMS, Push, and transactional email",
+      "status": "DOWN",
+      "responseTime": null,
+      "lastChecked": "2026-09-08T09:30:00.000Z"
+    },
+    {
+      "id": 4,
+      "name": "Order Management Service",
+      "description": "Processes orders, inventory holds, and fulfillment queues",
+      "status": "DEGRADED",
+      "responseTime": 420,
+      "lastChecked": "2026-09-08T09:30:00.000Z"
+    },
+    {
+      "id": 5,
+      "name": "Core Database Cluster",
+      "description": "Main transactional MySQL read/write cluster",
+      "status": "UP",
+      "responseTime": 18,
+      "lastChecked": "2026-09-08T09:30:00.000Z"
+    }
+  ],
+  "jobs": [
+    {
+      "id": 1,
+      "name": "Database Backup",
+      "description": "Automated snapshot dump to S3 cold storage",
+      "schedule": "Daily 02:00 AM",
+      "lastRun": "2026-09-08T02:00:00.000Z",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 2,
+      "name": "Customer Billing Batch",
+      "description": "Nightly subscription renewal and invoice generation",
+      "schedule": "Daily 04:00 AM",
+      "lastRun": "2026-09-08T04:00:00.000Z",
+      "status": "FAILED"
+    },
+    {
+      "id": 3,
+      "name": "Inventory Catalog Sync",
+      "description": "Hourly ERP product stock synchronization",
+      "schedule": "Every Hour",
+      "lastRun": "2026-09-08T09:00:00.000Z",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 4,
+      "name": "Audit Log Archival",
+      "description": "Rotates and zips compliance logs to archival storage",
+      "schedule": "Weekly Sunday",
+      "lastRun": "2026-09-06T23:59:00.000Z",
+      "status": "SUCCESS"
+    }
+  ],
+  "incidents": [
+    {
+      "id": 1,
+      "title": "Notification Engine Connection Timeout",
+      "description": "Notification Engine has stopped responding to health checks. Customers are not receiving OTP SMS.",
+      "severity": "CRITICAL",
+      "status": "OPEN",
+      "serviceName": "Notification Engine",
+      "createdAt": "2026-09-08T08:50:00.000Z",
+      "updatedAt": "2026-09-08T08:50:00.000Z"
+    },
+    {
+      "id": 2,
+      "title": "Billing Batch partial transaction failure",
+      "description": "Nightly billing batch crashed on chunk #42 due to network socket timeout.",
+      "severity": "HIGH",
+      "status": "IN_PROGRESS",
+      "serviceName": "Customer Billing Batch",
+      "createdAt": "2026-09-08T07:15:00.000Z",
+      "updatedAt": "2026-09-08T08:15:00.000Z"
+    },
+    {
+      "id": 3,
+      "title": "Order Service latency spike",
+      "description": "Average p95 response time elevated above 400ms during rush hour.",
+      "severity": "MEDIUM",
+      "status": "RESOLVED",
+      "serviceName": "Order Management Service",
+      "createdAt": "2026-09-08T03:30:00.000Z",
+      "updatedAt": "2026-09-08T06:45:00.000Z"
+    }
+  ],
+  "alerts": [
+    {
+      "id": 1,
+      "message": "Notification Engine is DOWN - HTTP 503 Service Unavailable",
+      "severity": "CRITICAL",
+      "type": "SERVICE",
+      "acknowledged": false,
+      "createdAt": "2026-09-08T08:50:00.000Z"
+    },
+    {
+      "id": 2,
+      "message": "Customer Billing Batch job run FAILED with exit code 1",
+      "severity": "HIGH",
+      "type": "JOB",
+      "acknowledged": false,
+      "createdAt": "2026-09-08T07:15:00.000Z"
+    },
+    {
+      "id": 3,
+      "message": "Order Management Service response time degraded (420ms > 300ms threshold)",
+      "severity": "MEDIUM",
+      "type": "SERVICE",
+      "acknowledged": true,
+      "createdAt": "2026-09-08T03:30:00.000Z"
+    }
+  ]
+}
